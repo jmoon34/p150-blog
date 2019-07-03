@@ -1,0 +1,10 @@
+{% extends 'scheduler/base.html' %}
+{% block content %}
+<div class="clearfix text-center">
+	<a class="btn btn-info left" href="{% url 'calendar-home' %}?{{ prev_month }}">Previous Month</a>
+	<a class="btn btn-info" href="{% url 'blog-home' %}">Home</a>	
+	<a class="btn btn-info" href="{% url 'event-create' %}">New Event</a>		
+	<a class="btn btn-info right" href="{% url 'calendar-home' %}?{{ next_month }}">Next Month</a>
+</div>
+{{ calendar }}
+{% endblock %}
