@@ -17,3 +17,9 @@ class CommentForm(forms.ModelForm):
         fields = ['text']
 
 
+class ArchiveYearForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['date_posted']
+
+

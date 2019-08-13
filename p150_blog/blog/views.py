@@ -14,6 +14,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
     FormView,
+    ArchiveIndexView,
+    YearArchiveView,
+    MonthArchiveView,
 )
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
@@ -43,6 +46,19 @@ def category(request):
 #        'categories': Category.objects.all()
 #    }
 #    return render(request, 'blog/category.html', context)
+
+class PostArchiveIndexView(ArchiveIndexView):
+    model = Post
+    date_field = "date_posted"
+
+class PostYearArchiveView(YearArchiveView):
+    queryset = Post.objects.all()
+    date_field = "date_posted"
+    make_object_list = True
+
+class PostMonthArchiveView(MonthArchiveView):
+    queryset = Post.objects.all()
+    date_field = "date_posted"
 
 class PostDetailView(DetailView):
     model = Post

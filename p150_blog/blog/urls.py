@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.views.generic.dates import ArchiveIndexView
 from . import views
 from .views import (
     PostListView,
@@ -14,12 +15,19 @@ from .views import (
     CategoryCreateView,
     CategoryUpdateView,
     CategoryDeleteView,
+    PostArchiveIndexView,
+    PostYearArchiveView,
+    PostMonthArchiveView,
 )
-
+from .models import Post
 
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('about/', views.about, name='blog-about'),
+    path('archive/', PostArchiveIndexView.as_view(), name='archive-index'),
+    path('archive/<int:year>/', PostYearArchiveView.as_view(), name='archive-year'),
+    path('archive/<int:year>/<int:month>',
+         PostMonthArchiveView.as_view(month_format='%m'), name='archive-month'),
     path('category/', views.category, name='blog-category'),
     path('category/<str:title>/', CategoryListView.as_view(),
          name='category-posts'),

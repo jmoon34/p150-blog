@@ -91,3 +91,17 @@ img {
 .comment {
 	margin: 20px 0px 20px 20px;
 }
+
+#archive-link {
+	color: black;
+}
+
+#override-table {
+	border: 1px solid black;	
+}
+
+.table td.fit {
+	white-space: nowrap;
+	width: 1%;
+}
+

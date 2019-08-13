@@ -33,8 +33,8 @@
 					<!-- Navbar Right Side -->
 					<div class="navbar-nav">
 						<form id="searchform" action="{% url 'search-list-view' %}" method="get" accept-charset="utf-8">
-							<input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
-							<button class="searchbutton" type="submit">
+							<input class="searchfield mt-2" id="searchbox" name="q" type="text" placeholder="Search">
+							<button class="searchbutton mr-2" type="submit">
 								<i class="fa fa-search">Search</i>
 							</button>
 						</form>
@@ -54,7 +54,7 @@
   <body>
 		<main role="main" class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-9">
 					{% if messages %}
 						{% for message in messages %}
 							<div class="alert alert-{{ message.tags }}">
@@ -64,15 +64,16 @@
 					{% endif %}
 					{% block content %}{% endblock %}
 				</div>
-				<div class="col-md-4">
-					<div class="content-section">
-						<h3>Our Sidebar</h3>
-						<p class='text-muted'>You can put any information here you'd like.
+				<div class="col-md-1.5">
+					<div class="content-section text-center">
+						<h3 class=>Quick Links</h3>
 							<ul class="list-group">
-								<li class="list-group-item list-group-item-light">Latest Posts</li>
-								<li class="list-group-item list-group-item-light">Announcements</li>
-								<li class="list-group-item list-group-item-light">Calendars</li>
-								<li class="list-group-item list-group-item-light">etc</li>
+								<li class="list-group-item list-group-item-light">
+									<a href="{% url 'blog-home' %}">Latest Posts</a>
+								</li>
+								<li class="list-group-item list-group-item-light">
+									<a href="{% url 'archive-index' %}">Archive</a>
+								</li>
 							</ul>
 						</p>
 					</div>

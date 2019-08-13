@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	{% for date in date_list|slice:":1" %}
+		<h3 class="text-center">Posts from {{ date|date:"F" }}</h3>
+		<a class="btn btn-outline-info left btn-sm" href="{% url 'archive-index' %}">All posts</a>
+		<a class="btn btn-outline-info left btn-sm" href="{% url 'archive-year' date.year %}">All posts from {{ date.year }}</a>
+		<a class="btn btn-outline-info left btn-sm" href="{% url 'archive-month' date.year date.month %}">All posts from {{ date|date:"F" }}</a>	
+	{% endfor %}
+	<p>
+		By Year:
+		{% for date in date_list.reverse %}
+			<a href="{% url 'archive-month' date.year date.month %}">{{ date|date:"M" }}</a>
+		{% endfor %}
+	</p>	
+	<table class="table table-hover table-sm table-bordered" id="override-table">	
+		<thead class="thead-light text-center">
+			<tr>
+				<th>Title</th>
+				<th>Date Posted</th>
+			</tr>
+		</thead>
+		{% for post in object_list %}
+		<tr>
+			<td class="text-center">
+				<a href="{% url 'post-detail' post.id %}" id="archive-link">
+					{{ post.title }}
+				</a>
+			</td>
+			<td class="text-center">
+				<small class="text-muted text-right">{{ post.date_posted|date:"F j, Y" }}</small>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
+
+

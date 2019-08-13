@@ -18,8 +18,3 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-class TestScores(models.Model):
-    two_k = models.TimeField(null=True, blank=True, default=time())
-    six_k = models.TimeField(null=True, blank=True, default=time())
-    max_watts = models.FloatField(null=True, blank=True, default=0.0)
-    name = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -1,7 +1,8 @@
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
 from django.contrib.auth.models import User
-from .models import Profile, TestScores
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -22,12 +23,3 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
-class TestScoresUpdateForm(forms.ModelForm):
-    class Meta:
-        model = TestScores
-        fields = ['two_k', 'six_k', 'max_watts']
-        labels = {
-            'two_k': '2k',
-            'six_k': '6k',
-            'max_watts': 'Max Watts'
-        }

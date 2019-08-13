@@ -4,7 +4,6 @@ from .forms import (
     UserRegisterForm,
     UserUpdateForm,
     ProfileUpdateForm,
-    TestScoresUpdateForm
 )
 from django.contrib.auth.decorators import login_required
 
@@ -28,8 +27,6 @@ def profile(request):
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES,
                                    instance=request.user.profile)
-        t_form = TestScoresUpdateForm(request.POST,
-                                      instance=request.user.testscores)
         if u_form.is_valid() and p_form.is_valid() and t_form.is_valid():
             u_form.save()
             p_form.save()
@@ -39,10 +36,8 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-        t_form = TestScoresUpdateForm(instance=request.user.testscores)
     context = {
         'u_form': u_form,
         'p_form': p_form,
-        't_form': t_form
     }
     return render(request, 'users/profile.html', context)

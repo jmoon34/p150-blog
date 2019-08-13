@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<h3 class="text-center">All Posts</h3>
+	<p>
+		By Year:
+		{% for date in date_list.reverse %}
+			<a href="{% url 'archive-year' date.year %}">{{ date|date:"Y" }}</a>
+		{% endfor %}
+	</p>
+	<table class="table table-hover table-sm table-bordered" id="override-table">	
+		<thead class="thead-light text-center">
+			<tr>
+				<th>Title</th>
+				<th>Date Posted</th>
+			</tr>
+		</thead>
+		{% for post in latest %}
+		<tr>
+			<td class="text-center">
+				<a href="{% url 'post-detail' post.id %}" id="archive-link">
+					{{ post.title }}
+				</a>
+			</td>
+			<td class="text-center">
+				<small class="text-muted text-right">{{ post.date_posted|date:"F j, Y" }}</small>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
