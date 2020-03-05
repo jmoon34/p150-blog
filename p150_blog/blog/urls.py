@@ -22,6 +22,7 @@ from .views import (
 from .models import Post
 
 urlpatterns = [
+    path('js', views.js, name='js'),
     path('', PostListView.as_view(), name='blog-home'),
     path('about/', views.about, name='blog-about'),
     path('archive/', PostArchiveIndexView.as_view(), name='archive-index'),

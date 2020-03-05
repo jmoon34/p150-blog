@@ -1,3 +1,7 @@
+Based on Corey Schafer's tutorial: https://coreyms.com/development/python/python-django-tutorials-full-series
+
+Customized for my rowing team back in University, along with additions following django documentation.  Incomplete project due to lack of mastery over web development concepts.  Will be resumed some time in the future.
+
 Functionalities:
 1. Add commenting functionality
 2. Calendar for day to day practice schedules and activities (expandable for detailed scheduling?)

@@ -22,6 +22,8 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 from django.urls import reverse
 
+def js(request):
+    return render(request, 'blog/js.html')
 
 def about(request):
     return render(request, 'blog/about.html')
